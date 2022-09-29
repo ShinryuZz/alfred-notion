@@ -4,7 +4,7 @@ require "json"
 require "date"
 
 MY_NOTION_TOKEN=ENV["TOKEN"]
-DATABASE_ID=ENV["DATABASE_ID"]
+DATABASE_ID=ENV["EKS_ID"]
 TZ="+09:00"
 
 def send_notion(title)
@@ -12,7 +12,7 @@ def send_notion(title)
   request = Net::HTTP::Post.new(uri)
   request.content_type = "application/json"
   request["Authorization"] = "Bearer #{MY_NOTION_TOKEN}"
-  request["Notion-Version"] = "2022-06-28
+  request["Notion-Version"] = "2021-05-13"
   request.body = JSON.dump({
     "parent" => {
       "database_id" => "#{DATABASE_ID}"
